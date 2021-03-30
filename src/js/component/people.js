@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-//import PropTypes from "prop-types";//
+import PropTypes from "prop-types";
 //import { useParams } from "react-router-dom";//
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import people_pics from "../component/people_pics";
 
-export function People() {
+export function People(props) {
 	const { store, actions } = useContext(Context);
 
 	return (
@@ -17,11 +18,18 @@ export function People() {
 								key={index}
 								className="card col-4 card-img-top"
 								style={{
-									width: "3cm",
+									width: "2.5cm",
 									padding: "0.5cm",
-									margin: "0.5cm"
+									margin: "0.5cm",
+
+									color: "black"
 								}}>
-								<img src="https://via.placeholder.com/400x200" className="card-img-top" alt="..." />
+								<img
+									src={people_pics[element.name]}
+									className="card-img-top"
+									alt="..."
+									style={{ margin: "auto" }}
+								/>
 								<div className="card-body">
 									<h5 className="card-title">{element.name}</h5>
 									<ul className="characters">
@@ -29,8 +37,8 @@ export function People() {
 										<li>Eye color: {element.eye_color}</li>
 										<li>Hair color: {element.hair_color}</li>
 									</ul>
-									<Link to={"/people_detailed/" + index} className="btn btn-outline-primary">
-										Learn More!
+									<Link to={"/people_detailed/" + index} className="btn btn-info">
+										MORE
 									</Link>
 									<button
 										onClick={() => actions.addFavorites(element.name, "persona")}
@@ -47,3 +55,7 @@ export function People() {
 		</div>
 	);
 }
+
+People.propTypes = {
+	url: PropTypes.string
+};

@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 //import { useParams } from "react-router-dom";//
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import planets_pics from "../component/planets_pics";
 
 export function Planets() {
 	const { store, actions } = useContext(Context);
@@ -16,8 +17,19 @@ export function Planets() {
 							<div
 								key={index}
 								className="card col-4 card-img-top"
-								style={{ width: "3cm", padding: "0.5cm", margin: "0.5cm" }}>
-								<img src="https://via.placeholder.com/400x200" className="card-img-top" alt="..." />
+								style={{
+									width: "2.5cm",
+									padding: "0.5cm",
+									margin: "0.5cm",
+
+									color: "black"
+								}}>
+								<img
+									src={planets_pics[element.name]}
+									className="card-img-top"
+									alt="..."
+									style={{ margin: "auto" }}
+								/>
 								<div className="card-body">
 									<h5 className="card-title">{element.name}</h5>
 									<ul className="planets">
@@ -25,8 +37,8 @@ export function Planets() {
 										<li>Gravity: {element.gravity}</li>
 										<li>Terrain: {element.terrain}</li>
 									</ul>
-									<Link to={"/planets_detailed/" + index} className="btn btn-outline-primary">
-										Learn More!
+									<Link to={"/planets_detailed/" + index} className="btn btn-info">
+										MORE
 									</Link>
 									<button
 										onClick={() => actions.addFavorites(element.name, "planeta")}

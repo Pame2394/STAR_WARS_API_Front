@@ -5,30 +5,40 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	console.log(store.favorites);
+	//console.log(store.favorites);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 
 	const toggle = () => setDropdownOpen(prevState => !prevState);
 
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar bg mb-3" style={{ background: "black" }}>
 			<Link className="navbar-brand" to="/">
 				<img
-					src="https://1000marcas.net/wp-content/uploads/2019/12/Star-Wars-Logo.png"
-					width="90px"
-					style={{ background: "#f8f9ed" }}
+					src="https://1000marcas.net/wp-content/uploads/2019/12/Star-Wars-emblema.jpg"
+					style={{
+						width: "150px",
+						height: "100px",
+
+						marginLeft: "7cm"
+					}}
 				/>
 			</Link>
 
 			<Dropdown isOpen={dropdownOpen} toggle={toggle}>
-				<DropdownToggle caret>Dropdown</DropdownToggle>
+				<DropdownToggle caret style={{ marginRight: "2cm" }}>
+					Favorites⏱
+					{store.favorites.length}
+				</DropdownToggle>
 				<DropdownMenu>
 					{store.favorites.map((element, i) => {
 						return (
 							<li key={i}>
 								<DropdownItem>
 									{element.name}
-									<button className="remove" onClick={() => actions.deleteFavorites(i)}>
+									<button
+										className="remove"
+										style={{ marginLeft: "10px" }}
+										onClick={() => actions.deleteFavorites(i)}>
 										<i className="fas fa-trash" />
 									</button>
 								</DropdownItem>

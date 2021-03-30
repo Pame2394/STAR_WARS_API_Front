@@ -8,28 +8,32 @@ export const PeopleDetailed = props => {
 	const params = useParams();
 
 	return (
-		<div className="jumbotron">
+		<div
+			className="jumbotron"
+			style={{
+				backgroundImage: `url("https://trumpwallpapers.com/wp-content/uploads/Star-Wars-4K-Wallpaper-02-2560-x-1440.jpg")`,
+				backgroundSize: "cover"
+			}}>
 			<h1 className="display-4"> {store.people[params.theid].name}</h1> <hr className="my-4" />
-			<div className="card mb-3" style={{ maxWidth: "5cm;" }}>
+			<div className="card mb-3">
 				<div className="row g-0">
 					<div className="col-md-4">
-						<img src="https://via.placeholder.com/800x600" style={{ width: "5cm" }} alt="..." />
+						<img src="https://images6.alphacoders.com/857/857790.jpg" style={{ width: "8cm" }} alt="..." />
 					</div>
 					<div className="col-md-8">
 						<div className="card-body">
-							<h5 className="card-title">{store.people[params.theid].name}</h5>
+							<h5 className="">{store.people[params.theid].name}</h5>
 							<p className="card-text">
-								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-								laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-								architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-								sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-								voluptatem sequi nesciunt.
+								Star Wars is a multi-genre mythology and multimedia franchise created by George Lucas in
+								1976. Comprising movies, novels, comics, video games, toys, and numerous television
+								series, the Star Wars franchise employs archetypal motifs common to religions, classical
+								mythology, and political climax, as well as musical motifs of those same aspects.
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className="container" style={{ height: "2cm", padding: "0.5cm" }}>
+			<div className="container" style={{ height: "2cm", padding: "0.5cm", color: "white" }}>
 				<div className="row">
 					<div className="col-sm-2">
 						<strong>Name: </strong>
@@ -58,14 +62,8 @@ export const PeopleDetailed = props => {
 				</div>
 			</div>
 			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
+				<img src="http://assets.stickpng.com/thumbs/580b585b2edbce24c47b2d2a.png" style={{ float: "right" }} />
 			</Link>
 		</div>
 	);
 };
-
-/*Single.propTypes = {
-	match: PropTypes.object
-};*/

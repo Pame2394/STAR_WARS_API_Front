@@ -53,9 +53,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			addFavorites: (nombre, tipo) => {
 				let favoritos = getStore().favorites;
-				favoritos = favoritos.concat({ name: nombre, type: tipo });
-				setStore({ favorites: [...favoritos] });
+				let nameArray = favoritos.map(obj => obj.name);
+				nameArray.includes(nombre)
+					? setStore({ favorites: favoritos })
+					: setStore({ favorites: favoritos.concat({ name: nombre, type: tipo }) });
 			},
+			//lo de arriba me permite agregar favoritos y con función ternaria hacer que no se repita el name
 
 			deleteFavorites: index => {
 				const favorites = getStore().favorites;
