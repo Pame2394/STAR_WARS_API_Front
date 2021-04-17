@@ -3,21 +3,23 @@
 */
 .scrolling-wrapper{
     overflow-x: auto;
-    
    background-color: #000000;
 background-image: linear-gradient(315deg, #000000 50%, #ffffff 85%);
 }
 h1{color: goldenrod;
 border-color: black};
 
+// ::-webkit-scrollbar-thumb {
+//   background: green; 
+//   border-radius: 10px;
+// } Intento de cambiar color de barra
 img {
     width: 100px; height: 160px;
     border-radius: 10px;
     //background-size: cover;
-    margin: 0 auto;
-   
-    
+    margin: 0 auto;   
 };
+
 h2 {color: goldenrod;
 border-color: black};
 
