@@ -5,12 +5,19 @@ import { Planets } from "../component/planets";
 import { Context } from "../store/appContext";
 import { element } from "prop-types";
 import peoplePics, { People_Pics } from "../component/people_pics";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	//aqui se colocan el people.map
 	return (
 		<div className="todo" style={{ backgroundImage: `url("https://wallpaperaccess.com/full/39608.jpg")` }}>
+			<Link to="/register" className="btn btn-success">
+				Register!
+			</Link>
+			<Link to="/login" className="btn btn-primary">
+				Log In
+			</Link>
 			<div className="container ">
 				<h1 style={{ paddingTop: "0.7cm" }}>Characters</h1>
 				<div

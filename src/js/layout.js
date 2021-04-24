@@ -4,6 +4,8 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
+import { Login } from "./views/login";
+import { Register } from "./views/register";
 import { PeopleDetailed } from "./views/people_detailed";
 import { PlanetsDetailed } from "./views/planets_detailed";
 import injectContext from "./store/appContext";
