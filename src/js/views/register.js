@@ -15,7 +15,7 @@ export const Register = () => {
 		};
 
 		// fetch de REGISTER
-		fetch("https://3000-peach-reindeer-5dsbnefl.ws-us03.gitpod.io/register", {
+		fetch("https://3000-black-bedbug-5yyezir6.ws-us04.gitpod.io/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -26,6 +26,14 @@ export const Register = () => {
 			.then(data => {
 				console.log(data);
 				// setAuth(true);
+				let msg = data.msg;
+
+				if (msg === "User created successfully") {
+					window.alert(msg + " please login now.");
+					setAuth(true);
+				} else {
+					window.alert("User not created. Error: " + msg);
+				}
 			})
 			.catch(err => console.log(err));
 	};
@@ -64,7 +72,7 @@ export const Register = () => {
 					Submit
 				</button>
 			</form>
-			{auth ? <Redirect to="/login" /> : null}
+			<Redirect to={"/login"} />
 		</div>
 	);
 };

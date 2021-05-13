@@ -1,3 +1,4 @@
+const url = "https://3000-black-bedbug-5yyezir6.ws-us03.gitpod.io";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -12,11 +13,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadPeople: () => {
-				fetch("https://www.swapi.tech/api/people/")
+				fetch(url + "/people")
 					.then(res => res.json())
 					.then(async data => {
-						console.log("load people", data.results);
-						let arrayResults = data.results;
+						console.log("load people", data);
+						let arrayResults = data;
 						let peopleArray = [];
 
 						for (let i = 0; i < arrayResults.length; i++) {

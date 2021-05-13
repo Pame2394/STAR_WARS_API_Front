@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
 export const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-
+	const [auth, setAuth] = useState(false);
 	const handleSubmit = e => {
 		e.preventDefault();
 
@@ -13,7 +14,7 @@ export const Login = () => {
 		};
 
 		// fetch de LOGIN
-		fetch("https://3000-peach-reindeer-5dsbnefl.ws-us03.gitpod.io/login", {
+		fetch("https://3000-black-bedbug-5yyezir6.ws-us04.gitpod.io/login", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -24,8 +25,15 @@ export const Login = () => {
 			.then(data => {
 				console.log(data);
 				// añadir token a session
-				sessionStorage.setItem("my_token", data.token);
-				// let token = sessionStorage.getItem("my_token")
+				let msg = data.msg;
+				if (msg === "Invalid username or password") {
+					window.alert(msg + " please login again.");
+				} else {
+					setAuth(true);
+					sessionStorage.setItem("my_token", data.token);
+				}
+
+				// let token = sessionStorage.getItem("my_token") como se hace redirect en react
 			})
 			.catch(err => console.log(err));
 	};
@@ -64,6 +72,7 @@ export const Login = () => {
 					Submit
 				</button>
 			</form>
+			{auth ? <Redirect to="/people" /> : null}
 		</div>
 	);
 };
